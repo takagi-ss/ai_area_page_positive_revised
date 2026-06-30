@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI・データ活用領域ページ ワイヤーフレーム</title>
+
+  <style>
+    :root {
+      --text: #111827;
+      --muted: #5f6673;
+      --line: #d9dee8;
+      --bg: #f6f7f9;
+      --white: #ffffff;
+      --blue: #0b84ff;
+      --navy: #050619;
+      --tag: #eef1f6;
+      --light-blue: #eaf3ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .hero {
+      min-height: 620px;
+      background:
+        linear-gradient(180deg, rgba(3, 9, 30, 0.96), rgba(3, 9, 30, 0.92)),
+        radial-gradient(circle at 50% 20%, rgba(11, 132, 255, 0.22), transparent 36%),
+        #06103f;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 96px 32px;
+      text-align: center;
+    }
+
+    .hero-inner {
+      max-width: 880px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 46px;
+      line-height: 1.35;
+      margin: 0 0 28px;
+      letter-spacing: 0.03em;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0 auto 34px;
+      color: #e5e7eb;
+      font-size: 15px;
+      text-align: center;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 160px;
+      height: 46px;
+      padding: 0 24px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--text);
+    }
+
+    .section {
+      padding: 88px 56px;
+    }
+
+    .section-white {
+      background: #fff;
+    }
+
+    .section-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: 32px;
+      margin: 0 0 12px;
+      letter-spacing: 0.04em;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .support-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.04);
+    }
+
+    .support-card h3 {
+      margin: 0 0 12px;
+      font-size: 19px;
+      line-height: 1.45;
+    }
+
+    .support-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .step-label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 38px;
+      height: 24px;
+      padding: 0 10px;
+      margin-bottom: 14px;
+      border-radius: 999px;
+      background: var(--light-blue);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .problem-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+    }
+
+    .problem-table th {
+      background: #f1f3f7;
+      font-size: 15px;
+      padding: 20px 24px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .problem-table td {
+      padding: 22px 24px;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+      font-size: 15px;
+    }
+
+    .problem-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .problem-table td:first-child {
+      width: 46%;
+      font-weight: 700;
+    }
+
+    .problem-table td:last-child {
+      color: #374151;
+    }
+
+    .support-link {
+      display: inline-flex;
+      margin-top: 10px;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+
+    .tab {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .tab.is-active {
+      background: var(--navy);
+      color: #fff;
+      border-color: var(--navy);
+    }
+
+    /* 関連サービスカード：PCは最大3列 */
+    .service-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .service-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+    }
+
+    .service-card.is-hidden {
+      display: none;
+    }
+
+    .service-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      background: var(--light-blue);
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+
+    .service-content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+    }
+
+    .service-content h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      line-height: 1.45;
+    }
+
+    .service-content p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--tag);
+      color: #4b5563;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .service-content .btn {
+      margin-top: auto;
+      align-self: flex-start;
+    }
+
+    .cta {
+      background: linear-gradient(135deg, #f1f3f7, #ffffff);
+      text-align: center;
+      padding: 96px 56px;
+      border-top: 1px solid var(--line);
+    }
+
+    .cta h2 {
+      font-size: 32px;
+      margin: 0 0 16px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      margin: 0 0 28px;
+      font-size: 15px;
+    }
+
+    .wire-note {
+      max-width: 1120px;
+      margin: 32px auto;
+      padding: 0 56px;
+      color: #8b95a5;
+      font-size: 12px;
+    }
+
+    /* タブレットは2列 */
+    @media (max-width: 1024px) {
+      .support-grid,
+      .service-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* スマホは1列 */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 72px 24px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .section {
+        padding: 64px 20px;
+      }
+
+      .section-title h2 {
+        font-size: 26px;
+      }
+
+      .problem-table,
+      .problem-table thead,
+      .problem-table tbody,
+      .problem-table tr,
+      .problem-table th,
+      .problem-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .problem-table thead {
+        display: none;
+      }
+
+      .problem-table tr {
+        border-bottom: 1px solid var(--line);
+        padding: 18px;
+      }
+
+      .problem-table td {
+        border-bottom: none;
+        padding: 0;
+      }
+
+      .problem-table td:first-child {
+        width: 100%;
+        margin-bottom: 12px;
+      }
+
+      .problem-table td:first-child::before {
+        content: "実現したいこと";
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 4px;
+      }
+
+      .problem-table td:last-child::before {
+        content: "当社の主な支援";
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 4px;
+      }
+
+      .support-grid,
+      .service-list {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        padding: 24px;
+      }
+
+
+      .cta {
+        padding: 72px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+
+        <h1>
+          AI活用の目的づくりから、<br />
+          業務で使える環境づくりまで。
+        </h1>
+
+        <p>
+          生成AIやAIチャットを業務で活用するには、ツールを導入するだけでなく、
+          何にAIを使うのか、どのデータを活かすのか、どのように安全に運用するのかを設計することが重要です。<br />
+          パソナデータ＆デザインは、AI活用の構想づくりから、社内データの整理・統合、
+          AI活用基盤の構築、セキュリティを考慮した運用設計まで、一貫して支援します。
+        </p>
+
+        <div class="hero-actions">
+          <a href="#services" class="btn btn-primary">支援サービスを見る</a>
+          <a href="https://pasona-dataanddesign.co.jp/contact/" class="btn btn-secondary">お問い合わせ</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white">
+      <div class="section-inner">
+        <div class="section-title">
+          <h2>AI活用の構想から実運用まで、一貫して支援します</h2>
+          <p>
+            業務で成果につながるAI活用には、目的の整理、データの準備、安全な利用環境、継続的な運用改善が欠かせません。
+          </p>
+        </div>
+
+        <div class="support-grid">
+          <article class="support-card">
+            <span class="step-label">01</span>
+            <h3>AI活用の目的を整理する</h3>
+            <p>
+              対象業務、活用シーン、期待する効果を整理し、
+              AIをどこから活用するべきかを明確にします。
+            </p>
+          </article>
+
+          <article class="support-card">
+            <span class="step-label">02</span>
+            <h3>社内データを活用できる状態に整える</h3>
+            <p>
+              社内に散在するデータやドキュメントを整理・統合し、
+              AIが参照しやすい状態に整備します。
+            </p>
+          </article>
+
+          <article class="support-card">
+            <span class="step-label">03</span>
+            <h3>安全に使えるAI活用基盤を構築する</h3>
+            <p>
+              RAG・AIチャットなどの活用に向けて、
+              権限管理やセキュリティを考慮した環境を整えます。
+            </p>
+          </article>
+
+          <article class="support-card">
+            <span class="step-label">04</span>
+            <h3>業務で使い続けられる形にする</h3>
+            <p>
+              PoCで終わらせず、実業務で継続的に活用できるよう、
+              導入後の運用・改善まで支援します。
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="section-title">
+          <h2>AI活用で広がる業務の可能性</h2>
+          <p>
+生成AIやAIチャットは、社内ナレッジの検索、問い合わせ対応、データ分析、意思決定支援など、さまざまな業務での活用が期待されています。
+パソナデータ＆デザインは、実現したい活用シーンに応じて、目的整理からデータ基盤の整備、セキュリティを考慮した運用設計まで支援します。          </p>
+        </div>
+
+        <table class="problem-table">
+          <thead>
+            <tr>
+              <th>実現したいこと</th>
+              <th>当社の主な支援</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>AI活用の目的と進め方を具体化したい</td>
+              <td>
+                対象業務、活用シーン、期待する効果を整理し、PoCや導入に向けた進め方を支援します。<br />
+                <a class="support-link" data-category="planning">関連サービスを見る →</a>
+              </td>
+            </tr>
+
+            <tr>
+              <td>社内ナレッジを検索・活用しやすくしたい</td>
+              <td>
+                社内ドキュメントや業務データをAIが参照できるようにし、必要な情報をすばやく探せる環境づくりを支援します。<br />
+                <a class="support-link" data-category="rag">関連サービスを見る →</a>
+              </td>
+            </tr>
+
+            <tr>
+              <td>蓄積データを分析・意思決定に活かしたい</td>
+              <td>
+                社内に蓄積されたデータを整理し、分析やレポーティング、経営・業務判断に活用しやすい状態に整えます。<br />
+                <a class="support-link" data-category="data-platform">関連サービスを見る →</a>
+              </td>
+            </tr>
+
+            <tr>
+              <td>セキュリティを考慮してAIを活用したい</td>
+              <td>
+                機密情報や個人情報を扱うAI活用に向けて、権限管理、利用ルール、ガバナンスを考慮した環境づくりを支援します。<br />
+                <a class="support-link" data-category="security">関連サービスを見る →</a>
+              </td>
+            </tr>
+
+            <tr>
+              <td>PoCから実運用へつなげたい</td>
+              <td>
+                活用目的や評価観点を整理し、PoC、MVP、本番展開、運用改善まで見据えた導入を支援します。<br />
+                <a class="support-link" data-category="production">関連サービスを見る →</a>
+              </td>
+            </tr>
+
+            <tr>
+              <td>既存のDB・クラウド環境を活かしてAI活用を進めたい</td>
+              <td>
+                既存のデータベースやクラウド環境を活かしながら、段階的にAI・データ活用基盤を整備します。<br />
+                <a class="support-link" data-category="cloud">関連サービスを見る →</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section section-white" id="services">
+      <div class="section-inner">
+        <div class="section-title">
+          <h2>AI・データ活用を支援するサービス</h2>
+          <p>
+            実現したいAI・データ活用に応じて、構想づくり、データ基盤整備、RAG・AIチャット活用、
+            セキュリティ設計、実運用化まで支援するサービスをご紹介します。
+          </p>
+        </div>
+
+        <div class="tabs" aria-label="サービスカテゴリ">
+          <button class="tab is-active" data-category="all">すべて</button>
+          <button class="tab" data-category="planning">構想づくり・PoC支援</button>
+          <button class="tab" data-category="data-platform">データ統合・AI活用基盤</button>
+          <button class="tab" data-category="rag">RAG・AIチャット活用</button>
+          <button class="tab" data-category="security">セキュリティ・ガバナンス</button>
+          <button class="tab" data-category="production">PoC・実運用化支援</button>
+          <button class="tab" data-category="cloud">クラウド・データ基盤</button>
+        </div>
+
+        <div class="service-list">
+          <article
+            class="service-card"
+            data-categories="planning data-platform rag cloud security production"
+          >
+          
+
+            <div class="service-content">
+              <h3>AI Ready Platform on OCI 導入支援サービス</h3>
+
+              <p>
+                散在する社内データを統合し、生成AI・RAG・AIエージェントが活用できる
+                AIデータプラットフォームをOCI上に構築する導入支援サービスです。
+              </p>
+
+              <div class="tags">
+                <span class="tag">データ統合</span>
+                <span class="tag">AI活用基盤</span>
+                <span class="tag">RAG</span>
+                <span class="tag">OCI</span>
+                <span class="tag">セキュリティ</span>
+              </div>
+
+              <a href="https://cloudmiko.jp/lp/ai-ready-platform-on-oci/" class="btn btn-primary">詳しく見る</a>
+            </div>
+          </article>
+
+          <article
+            class="service-card"
+            data-categories="data-platform"
+          >
+         
+
+            <div class="service-content">
+              <h3>CData Sync 導入・データ連携支援</h3>
+
+              <p>
+                SaaS、データベース、クラウドサービスなどに分散したデータを連携・同期し、
+                分析・AI活用に必要なデータ統合基盤の整備を支援します。
+              </p>
+
+              <div class="tags">
+                <span class="tag">データ連携</span>
+                <span class="tag">データ統合</span>
+                <span class="tag">AI活用基盤</span>
+                <span class="tag">SaaS連携</span>
+              </div>
+
+              <a href="https://www.s-style.co.jp/products/cdata" class="btn btn-primary">詳しく見る</a>
+            </div>
+          </article>
+
+          <article
+            class="service-card"
+            data-categories="rag"
+          >
+            <div class="service-content">
+              <h3>【仮】サービスA（RAG・AIチャット活用）</h3>
+
+              <p>
+                社内ドキュメントやデータベースを参照し、業務で活用できるRAG・AIチャット環境の
+                設計・構築を支援する想定サービスです。
+              </p>
+
+              <div class="tags">
+                <span class="tag">RAG</span>
+                <span class="tag">AIチャット</span>
+                <span class="tag">社内データ活用</span>
+              </div>
+
+              <a href="#" class="btn btn-primary">詳しく見る</a>
+            </div>
+          </article>
+
+          <article
+            class="service-card"
+            data-categories="security"
+          >
+            <div class="service-content">
+              <h3>【仮】サービスB（セキュリティ・ガバナンス）</h3>
+
+              <p>
+                機密情報や個人情報を扱うAI活用に向けて、権限管理、利用ルール、監査性などを考慮した
+                安全な利用環境づくりを支援する想定サービスです。
+              </p>
+
+              <div class="tags">
+                <span class="tag">セキュリティ</span>
+                <span class="tag">ガバナンス</span>
+                <span class="tag">権限管理</span>
+              </div>
+
+              <a href="#" class="btn btn-primary">詳しく見る</a>
+            </div>
+          </article>
+
+          <article
+            class="service-card"
+            data-categories="production"
+          >
+            <div class="service-content">
+              <h3>【仮】サービスC（PoC・実運用化支援）</h3>
+
+              <p>
+                AI活用をPoCで終わらせず、MVP、本番導入、運用改善まで段階的に進めるための
+                実運用化支援を想定したサービスです。
+              </p>
+
+              <div class="tags">
+                <span class="tag">PoC</span>
+                <span class="tag">MVP</span>
+                <span class="tag">本番展開</span>
+              </div>
+
+              <a href="#" class="btn btn-primary">詳しく見る</a>
+            </div>
+          </article>
+
+          <article
+            class="service-card"
+            data-categories="cloud"
+          >
+            <div class="service-content">
+              <h3>【仮】サービスD（クラウド・データ基盤）</h3>
+
+              <p>
+                既存のデータベースやクラウド環境を活かしながら、AI・データ活用に必要な
+                データ基盤の整備を支援する想定サービスです。
+              </p>
+
+              <div class="tags">
+                <span class="tag">クラウド</span>
+                <span class="tag">データ基盤</span>
+                <span class="tag">DB活用</span>
+              </div>
+
+              <a href="#" class="btn btn-primary">詳しく見る</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <h2>AI・データ活用に関するご相談はこちら</h2>
+
+      <p>
+        生成AI、RAG、AIチャット、データ基盤整備など、実現したいAI・データ活用テーマがありましたら、お気軽にご相談ください。
+      </p>
+
+      <a href="https://pasona-dataanddesign.co.jp/contact/" class="btn btn-primary">お問い合わせ</a>
+    </section>
+  </main>
+
+  <div class="wire-note">
+    ※ワイヤーフレーム確認用のHTMLです。実際のデザイン・文言・リンク先は制作時に調整してください。
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    const serviceCards = document.querySelectorAll(".service-card");
+    const supportLinks = document.querySelectorAll(".support-link");
+    const servicesSection = document.getElementById("services");
+
+    function setCategory(category) {
+      tabs.forEach((tab) => {
+        tab.classList.toggle("is-active", tab.dataset.category === category);
+      });
+
+      serviceCards.forEach((card) => {
+        const categories = card.dataset.categories.split(" ");
+        const shouldShow = category === "all" || categories.includes(category);
+        card.classList.toggle("is-hidden", !shouldShow);
+      });
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        setCategory(tab.dataset.category);
+      });
+    });
+
+    supportLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        const category = link.dataset.category;
+        setCategory(category);
+
+        servicesSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      });
+    });
+  </script>
+</body>
+</html>
