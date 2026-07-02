@@ -6,38 +6,42 @@
   <title>AI・データ活用領域ページ ワイヤーフレーム</title>
 
   <style>
-    :root {
-      --text: #111827;
-      --muted: #5f6673;
-      --line: #d9dee8;
-      --bg: #f6f7f9;
-      --white: #ffffff;
-      --blue: #0b84ff;
-      --navy: #050619;
-      --tag: #eef1f6;
-      --light-blue: #eaf3ff;
-    }
+   :root {
+  --text: #111827;
+  --muted: #5f6673;
+  --line: #d9dee8;
+  --bg: #f6f7f9;
+  --white: #ffffff;
+  --blue: #0b84ff;
+  --navy: #050619;
+  --tag: #eef1f6;
+  --light-blue: #eaf3ff;
+}
 
-    * {
-      box-sizing: border-box;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    html {
-      scroll-behavior: smooth;
-    }
+html {
+  scroll-behavior: smooth;
+}
 
-    body {
-      margin: 0;
-      font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.75;
-    }
+body {
+  margin: 0;
+  font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.75;
+}
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========================
+   FV
+========================= */
 
 .hero {
   position: relative;
@@ -50,42 +54,42 @@
   padding: 96px 32px;
   text-align: center;
   background:
-    radial-gradient(circle at 82% 28%, rgba(102, 72, 198, 0.16), transparent 30%),
-    radial-gradient(circle at 18% 72%, rgba(11, 132, 255, 0.12), transparent 34%),
-    linear-gradient(180deg, #ffffff 0%, #f6f9ff 52%, #eef7ff 100%);
+    radial-gradient(circle at 82% 28%, rgba(102, 72, 198, 0.14), transparent 30%),
+    radial-gradient(circle at 18% 72%, rgba(11, 132, 255, 0.11), transparent 34%),
+    linear-gradient(180deg, #ffffff 0%, #f7fbff 52%, #eef7ff 100%);
 }
 
-/* 薄いグリッドだけ */
+/* 薄いグリッド */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0, 74, 173, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 74, 173, 0.045) 1px, transparent 1px);
+    linear-gradient(rgba(0, 74, 173, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 74, 173, 0.04) 1px, transparent 1px);
   background-size: 56px 56px;
   opacity: 0.55;
   mask-image: radial-gradient(circle at 50% 50%, black 0%, transparent 76%);
   z-index: 0;
+  pointer-events: none;
 }
 
-/* 右奥にだけAIっぽい抽象ライン。文字には被せない */
+/* 右奥の抽象ライン。文字には被せない */
 .hero::after {
   content: "";
   position: absolute;
-  right: -120px;
-  top: 80px;
-  width: 520px;
+  right: -140px;
+  top: 90px;
+  width: 540px;
   height: 360px;
   background:
-    radial-gradient(circle at 30% 35%, rgba(11, 132, 255, 0.18) 0 3px, transparent 4px),
-    radial-gradient(circle at 62% 25%, rgba(102, 72, 198, 0.16) 0 3px, transparent 4px),
-    radial-gradient(circle at 70% 68%, rgba(0, 151, 178, 0.16) 0 3px, transparent 4px),
-    linear-gradient(135deg, transparent 0 45%, rgba(11, 132, 255, 0.12) 46% 47%, transparent 48%),
-    linear-gradient(30deg, transparent 0 54%, rgba(102, 72, 198, 0.10) 55% 56%, transparent 57%);
+    radial-gradient(circle at 30% 35%, rgba(11, 132, 255, 0.16) 0 3px, transparent 4px),
+    radial-gradient(circle at 62% 25%, rgba(102, 72, 198, 0.14) 0 3px, transparent 4px),
+    radial-gradient(circle at 70% 68%, rgba(0, 151, 178, 0.14) 0 3px, transparent 4px),
+    linear-gradient(135deg, transparent 0 45%, rgba(11, 132, 255, 0.10) 46% 47%, transparent 48%),
+    linear-gradient(30deg, transparent 0 54%, rgba(102, 72, 198, 0.08) 55% 56%, transparent 57%);
   border-radius: 50%;
-  filter: blur(0.2px);
-  opacity: 0.75;
+  opacity: 0.65;
   z-index: 0;
   pointer-events: none;
 }
@@ -114,367 +118,430 @@
   text-align: center;
 }
 
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 160px;
-      height: 46px;
-      padding: 0 24px;
-      border-radius: 4px;
-      font-weight: 700;
-      font-size: 14px;
-      cursor: pointer;
-      border: none;
-    }
+/* =========================
+   Button
+========================= */
 
-    .btn-primary {
-      background: var(--blue);
-      color: #fff;
-    }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 160px;
+  height: 46px;
+  padding: 0 24px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+}
 
-    .btn-secondary {
-      background: #fff;
-      color: var(--text);
-    }
+/* FV内だけボタンサイズを統一 */
+.hero-actions .btn {
+  width: 180px;
+  height: 48px;
+  padding: 0 20px;
+}
 
-    .section {
-      padding: 88px 56px;
-    }
+.btn-primary {
+  background: var(--blue);
+  color: #fff;
+}
 
-    .section-white {
-      background: #fff;
-    }
+.btn-secondary {
+  background: #fff;
+  color: var(--text);
+  border: 1px solid var(--line);
+}
 
-    .section-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-    }
+/* =========================
+   Section
+========================= */
 
-    .section-title {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+.section {
+  padding: 88px 56px;
+}
 
-    .section-title h2 {
-      font-size: 32px;
-      margin: 0 0 12px;
-      letter-spacing: 0.04em;
-    }
+.section-white {
+  background: #fff;
+}
 
-    .section-title p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 15px;
-    }
+.section-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
 
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
 
-    .support-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
+.section-title h2 {
+  font-size: 32px;
+  margin: 0 0 12px;
+  letter-spacing: 0.04em;
+}
 
-    .support-card {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 28px;
-      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.04);
-    }
+.section-title p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
 
-    .support-card h3 {
-      margin: 0 0 12px;
-      font-size: 19px;
-      line-height: 1.45;
-    }
+/* =========================
+   Support Step
+========================= */
 
-    .support-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
 
-    .step-label {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 38px;
-      height: 24px;
-      padding: 0 10px;
-      margin-bottom: 14px;
-      border-radius: 999px;
-      background: var(--light-blue);
-      color: var(--blue);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-    }
+.support-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.04);
+}
 
-    .problem-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
-    }
+.support-card h3 {
+  margin: 0 0 12px;
+  font-size: 19px;
+  line-height: 1.45;
+}
 
-    .problem-table th {
-      background: #f1f3f7;
-      font-size: 15px;
-      padding: 20px 24px;
-      text-align: left;
-      border-bottom: 1px solid var(--line);
-    }
+.support-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
 
-    .problem-table td {
-      padding: 22px 24px;
-      vertical-align: top;
-      border-bottom: 1px solid var(--line);
-      font-size: 15px;
-    }
+.step-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  height: 24px;
+  padding: 0 10px;
+  margin-bottom: 14px;
+  border-radius: 999px;
+  background: var(--light-blue);
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
 
-    .problem-table tr:last-child td {
-      border-bottom: none;
-    }
+/* =========================
+   Problem Table
+========================= */
 
-    .problem-table td:first-child {
-      width: 46%;
-      font-weight: 700;
-    }
+.problem-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+}
 
-    .problem-table td:last-child {
-      color: #374151;
-    }
+.problem-table th {
+  background: #f1f3f7;
+  font-size: 15px;
+  padding: 20px 24px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
 
-    .support-link {
-      display: inline-flex;
-      margin-top: 10px;
-      color: var(--blue);
-      font-weight: 700;
-      font-size: 14px;
-      cursor: pointer;
-    }
+.problem-table td {
+  padding: 22px 24px;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+}
 
-    .tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      margin-bottom: 32px;
-    }
+.problem-table tr:last-child td {
+  border-bottom: none;
+}
 
-    .tab {
-      border: 1px solid var(--line);
-      background: #fff;
-      color: var(--muted);
-      padding: 8px 16px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-    }
+.problem-table td:first-child {
+  width: 46%;
+  font-weight: 700;
+}
 
-    .tab.is-active {
-      background: var(--navy);
-      color: #fff;
-      border-color: var(--navy);
-    }
+.problem-table td:last-child {
+  color: #374151;
+}
 
-    /* 関連サービスカード：PCは最大3列 */
-    .service-list {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      align-items: stretch;
-    }
+.support-link {
+  display: inline-flex;
+  margin-top: 10px;
+  color: var(--blue);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
 
-    .service-card {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
-    }
+/* =========================
+   Tabs
+========================= */
 
-    .service-card.is-hidden {
-      display: none;
-    }
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
 
-    .service-icon {
-      width: 72px;
-      height: 72px;
-      border-radius: 20px;
-      background: var(--light-blue);
-      color: var(--blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 30px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      flex-shrink: 0;
-    }
+.tab {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--muted);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
 
-    .service-content {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      width: 100%;
-    }
+.tab.is-active {
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
+}
 
-    .service-content h3 {
-      margin: 0 0 12px;
-      font-size: 20px;
-      line-height: 1.45;
-    }
+/* =========================
+   Service Cards
+========================= */
 
-    .service-content p {
-      margin: 0 0 18px;
-      color: var(--muted);
-      font-size: 14px;
-    }
+.service-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
 
-    .tags {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 22px;
-    }
+.service-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+}
 
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: var(--tag);
-      color: #4b5563;
-      font-size: 12px;
-      font-weight: 700;
-    }
+.service-card.is-hidden {
+  display: none;
+}
 
-    .service-content .btn {
-      margin-top: auto;
-      align-self: flex-start;
-    }
+.service-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  background: var(--light-blue);
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
 
-    .cta {
-      background: linear-gradient(135deg, #f1f3f7, #ffffff);
-      text-align: center;
-      padding: 96px 56px;
-      border-top: 1px solid var(--line);
-    }
+.service-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
 
-    .cta h2 {
-      font-size: 32px;
-      margin: 0 0 16px;
-    }
+.service-content h3 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  line-height: 1.45;
+}
 
-    .cta p {
-      color: var(--muted);
-      margin: 0 0 28px;
-      font-size: 15px;
-    }
+.service-content p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 14px;
+}
 
-    .wire-note {
-      max-width: 1120px;
-      margin: 32px auto;
-      padding: 0 56px;
-      color: #8b95a5;
-      font-size: 12px;
-    }
+.tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
 
-    /* タブレットは2列 */
-    @media (max-width: 1024px) {
-      .support-grid,
-      .service-list {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--tag);
+  color: #4b5563;
+  font-size: 12px;
+  font-weight: 700;
+}
 
-    /* スマホは1列 */
-    @media (max-width: 768px) {
-      .hero {
-        padding: 72px 24px;
-      }
+.service-content .btn {
+  margin-top: auto;
+  align-self: flex-start;
+}
 
-      .hero h1 {
-        font-size: 32px;
-      }
+/* =========================
+   CTA
+========================= */
 
-      .section {
-        padding: 64px 20px;
-      }
+.cta {
+  background: linear-gradient(135deg, #f1f3f7, #ffffff);
+  text-align: center;
+  padding: 96px 56px;
+  border-top: 1px solid var(--line);
+}
 
-      .section-title h2 {
-        font-size: 26px;
-      }
+.cta h2 {
+  font-size: 32px;
+  margin: 0 0 16px;
+}
 
-      .problem-table,
-      .problem-table thead,
-      .problem-table tbody,
-      .problem-table tr,
-      .problem-table th,
-      .problem-table td {
-        display: block;
-        width: 100%;
-      }
+.cta p {
+  color: var(--muted);
+  margin: 0 0 28px;
+  font-size: 15px;
+}
 
-      .problem-table thead {
-        display: none;
-      }
+.wire-note {
+  max-width: 1120px;
+  margin: 32px auto;
+  padding: 0 56px;
+  color: #8b95a5;
+  font-size: 12px;
+}
 
-      .problem-table tr {
-        border-bottom: 1px solid var(--line);
-        padding: 18px;
-      }
+/* =========================
+   Responsive
+========================= */
 
-      .problem-table td {
-        border-bottom: none;
-        padding: 0;
-      }
+@media (max-width: 1024px) {
+  .support-grid,
+  .service-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
-      .problem-table td:first-child {
-        width: 100%;
-        margin-bottom: 12px;
-      }
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding: 72px 24px;
+  }
 
-      .problem-table td:first-child::before {
-        content: "実現したいこと";
-        display: block;
-        color: var(--muted);
-        font-size: 12px;
-        margin-bottom: 4px;
-      }
+  .hero::after {
+    right: -240px;
+    top: 120px;
+    opacity: 0.35;
+  }
 
-      .problem-table td:last-child::before {
-        content: "当社の主な支援";
-        display: block;
-        color: var(--muted);
-        font-size: 12px;
-        margin-bottom: 4px;
-      }
+  .hero h1 {
+    font-size: 32px;
+  }
 
-      .support-grid,
-      .service-list {
-        grid-template-columns: 1fr;
-      }
+  .hero p {
+    font-size: 14px;
+    text-align: left;
+  }
 
-      .service-card {
-        padding: 24px;
-      }
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
 
+  .hero-actions .btn {
+    width: 100%;
+    max-width: 280px;
+  }
 
-      .cta {
-        padding: 72px 20px;
-      }
-    }
+  .section {
+    padding: 64px 20px;
+  }
+
+  .section-title h2 {
+    font-size: 26px;
+  }
+
+  .problem-table,
+  .problem-table thead,
+  .problem-table tbody,
+  .problem-table tr,
+  .problem-table th,
+  .problem-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .problem-table thead {
+    display: none;
+  }
+
+  .problem-table tr {
+    border-bottom: 1px solid var(--line);
+    padding: 18px;
+  }
+
+  .problem-table td {
+    border-bottom: none;
+    padding: 0;
+  }
+
+  .problem-table td:first-child {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .problem-table td:first-child::before {
+    content: "実現したいこと";
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  .problem-table td:last-child::before {
+    content: "当社の主な支援";
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  .support-grid,
+  .service-list {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    padding: 24px;
+  }
+
+  .cta {
+    padding: 72px 20px;
+  }
+}
   </style>
 </head>
 
