@@ -6,579 +6,590 @@
   <title>AI・データ活用領域ページ ワイヤーフレーム</title>
 
   <style>
-   :root {
-  --text: #111827;
-  --muted: #5f6673;
-  --line: #d9dee8;
-  --bg: #f6f7f9;
-  --white: #ffffff;
-  --blue: #6648c6;
-  --blue-dark: #5536b2;
-  --blue-deep: #2e1a75;
-  --navy: #2e1a75;
-  --light-blue: #f3f0ff;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
-  color: var(--text);
-  background: var(--bg);
-  line-height: 1.75;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-/* =========================
-   FV
-========================= */
-
-.hero {
-  position: relative;
-  min-height: 620px;
-  overflow: hidden;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 96px 32px;
-  text-align: center;
-  background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.22), transparent 32%),
-    radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.28), transparent 34%),
-    linear-gradient(135deg, #6648c6 0%, #5536b2 48%, #2e1a75 100%);
-}
-
-/* 薄いグリッド */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 56px 56px;
-  opacity: 0.45;
-  mask-image: radial-gradient(circle at 50% 50%, black 0%, transparent 76%);
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* 右奥の抽象ライン。文字には被せない */
-.hero::after {
-  content: "";
-  position: absolute;
-  right: -140px;
-  top: 90px;
-  width: 540px;
-  height: 360px;
-  background:
-    radial-gradient(circle at 30% 35%, rgba(255, 255, 255, 0.18) 0 3px, transparent 4px),
-    radial-gradient(circle at 62% 25%, rgba(216, 180, 254, 0.26) 0 3px, transparent 4px),
-    radial-gradient(circle at 70% 68%, rgba(129, 140, 248, 0.22) 0 3px, transparent 4px),
-    linear-gradient(135deg, transparent 0 45%, rgba(255, 255, 255, 0.14) 46% 47%, transparent 48%),
-    linear-gradient(30deg, transparent 0 54%, rgba(216, 180, 254, 0.16) 55% 56%, transparent 57%);
-  border-radius: 50%;
-  opacity: 0.75;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.hero-inner {
-  position: relative;
-  z-index: 1;
-  max-width: 880px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.hero h1 {
-  font-size: 46px;
-  line-height: 1.35;
-  margin: 0 0 28px;
-  letter-spacing: 0.03em;
-  color: #fff;
-}
-
-.hero p {
-  max-width: 760px;
-  margin: 0 auto 34px;
-  color: rgba(255, 255, 255, 0.86);
-  font-size: 15px;
-  text-align: center;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.hero-label {
-  display: inline-flex;
-  align-items: center;
-  padding: 7px 14px;
-  margin-bottom: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
-  font-weight: 800;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-}    
-/* =========================
-   Button
-========================= */
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 160px;
-  height: 46px;
-  padding: 0 24px;
-  border-radius: 4px;
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-  border: none;
-}
-
-/* FV内だけボタンサイズを統一 */
-.hero-actions .btn {
-  width: 180px;
-  height: 48px;
-  padding: 0 20px;
-}
-
-.btn-primary {
-  background: var(--blue);
-  color: #fff;
-}
-
-.btn-primary:hover {
-  background: var(--blue-dark);
-}
-
-.btn-secondary {
-  background: #fff;
-  color: var(--text);
-  border: 1px solid var(--line);
-}
-
-.hero .btn-primary {
-  background: #fff;
-  color: var(--blue-dark);
-}
-
-.hero .btn-primary:hover {
-  background: var(--light-blue);
-}
-
-.hero .btn-secondary {
-  background: transparent;
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.72);
-}
-
-.hero .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.12);
-}
-
-/* =========================
-   Section
-========================= */
-
-.section {
-  padding: 88px 56px;
-}
-
-.section-white {
-  background: #fff;
-}
-
-.section-inner {
-  max-width: 1120px;
-  margin: 0 auto;
-}
-
-.section-title {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.section-title h2 {
-  font-size: 32px;
-  margin: 0 0 12px;
-  letter-spacing: 0.04em;
-}
-
-.section-title p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 15px;
-}
-
-/* =========================
-   Support Step
-========================= */
-
-.support-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-.support-card {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 28px;
-  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.04);
-}
-
-.support-card h3 {
-  margin: 0 0 12px;
-  font-size: 19px;
-  line-height: 1.45;
-}
-
-.support-card p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.step-label {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 38px;
-  height: 24px;
-  padding: 0 10px;
-  margin-bottom: 14px;
-  border-radius: 999px;
-  background: var(--light-blue);
-  color: var(--blue);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-}
-
-/* =========================
-   Problem Table
-========================= */
-
-.problem-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
-}
-
-.problem-table th {
-  background: #f1f3f7;
-  font-size: 15px;
-  padding: 20px 24px;
-  text-align: left;
-  border-bottom: 1px solid var(--line);
-}
-
-.problem-table td {
-  padding: 22px 24px;
-  vertical-align: top;
-  border-bottom: 1px solid var(--line);
-  font-size: 15px;
-}
-
-.problem-table tr:last-child td {
-  border-bottom: none;
-}
-
-.problem-table td:first-child {
-  width: 46%;
-  font-weight: 700;
-}
-
-.problem-table td:last-child {
-  color: #374151;
-}
-
-.support-link {
-  display: inline-flex;
-  margin-top: 10px;
-  color: var(--blue);
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-/* =========================
-   Tabs
-========================= */
-
-.tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 32px;
-}
-
-.tab {
-  border: 1px solid var(--line);
-  background: #fff;
-  color: var(--muted);
-  padding: 8px 16px;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.tab:hover {
-  border-color: var(--blue);
-  color: var(--blue);
-  background: var(--light-blue);
-}
-
-.tab.is-active {
-  background: var(--navy);
-  color: #fff;
-  border-color: var(--navy);
-}
-
-/* =========================
-   Service Cards
-========================= */
-
-.service-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  align-items: stretch;
-}
-
-.service-card {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 28px;
-  min-height: 280px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
-}
-
-.service-card.is-hidden {
-  display: none;
-}
-
-.service-content {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-}
-
-.service-content h3 {
-  margin: 0 0 12px;
-  font-size: 20px;
-  line-height: 1.45;
-}
-
-.service-content p {
-  margin: 0 0 18px;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.service-content .btn {
-  margin-top: auto;
-  align-self: flex-start;
-}
-
-/* =========================
-   CTA
-========================= */
-
-.cta {
-  background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.22), transparent 32%),
-    radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.28), transparent 34%),
-    linear-gradient(135deg, #6648c6 0%, #5536b2 48%, #2e1a75 100%);
-  color: #fff;
-  text-align: center;
-  padding: 96px 56px;
-}
-
-.cta h2 {
-  font-size: 32px;
-  margin: 0 0 16px;
-  color: #fff;
-}
-
-.cta p {
-  color: rgba(255, 255, 255, 0.86);
-  margin: 0 0 28px;
-  font-size: 15px;
-}
-
-.cta .btn-primary {
-  background: #fff;
-  color: var(--blue-dark);
-}
-
-.cta .btn-primary:hover {
-  background: var(--light-blue);
-}
-
-.wire-note {
-  max-width: 1120px;
-  margin: 32px auto;
-  padding: 0 56px;
-  color: #8b95a5;
-  font-size: 12px;
-}
-
-/* =========================
-   Responsive
-========================= */
-
-@media (max-width: 1024px) {
-  .support-grid,
-  .service-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .hero {
-    min-height: auto;
-    padding: 72px 24px;
-  }
-
-  .hero::after {
-    right: -240px;
-    top: 120px;
-    opacity: 0.35;
-  }
-
-  .hero h1 {
-    font-size: 32px;
-  }
-
-  .hero p {
-    font-size: 14px;
-    text-align: left;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hero-actions .btn {
-    width: 100%;
-    max-width: 280px;
-  }
-
-  .section {
-    padding: 64px 20px;
-  }
-
-  .section-title h2 {
-    font-size: 26px;
-  }
-
-  .problem-table,
-  .problem-table thead,
-  .problem-table tbody,
-  .problem-table tr,
-  .problem-table th,
-  .problem-table td {
-    display: block;
-    width: 100%;
-  }
-
-  .problem-table thead {
-    display: none;
-  }
-
-  .problem-table tr {
-    border-bottom: 1px solid var(--line);
-    padding: 18px;
-  }
-
-  .problem-table td {
-    border-bottom: none;
-    padding: 0;
-  }
-
-  .problem-table td:first-child {
-    width: 100%;
-    margin-bottom: 12px;
-  }
-
-  .problem-table td:first-child::before {
-    content: "実現したいこと";
-    display: block;
-    color: var(--muted);
-    font-size: 12px;
-    margin-bottom: 4px;
-  }
-
-  .problem-table td:last-child::before {
-    content: "当社の主な支援";
-    display: block;
-    color: var(--muted);
-    font-size: 12px;
-    margin-bottom: 4px;
-  }
-
-  .support-grid,
-  .service-list {
-    grid-template-columns: 1fr;
-  }
-
-  .service-card {
-    padding: 24px;
-  }
-
-  .cta {
-    padding: 72px 20px;
-  }
-}
+    :root {
+      --text: #111827;
+      --muted: #5f6673;
+      --line: #d9dee8;
+      --bg: #f6f7f9;
+      --white: #ffffff;
+      --blue: #6648c6;
+      --blue-dark: #5536b2;
+      --blue-deep: #2e1a75;
+      --navy: #2e1a75;
+      --light-blue: #f3f0ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* =========================
+       FV
+    ========================= */
+
+    .hero {
+      position: relative;
+      min-height: 620px;
+      overflow: hidden;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 96px 32px;
+      text-align: center;
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.22), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.28), transparent 34%),
+        linear-gradient(135deg, #6648c6 0%, #5536b2 48%, #2e1a75 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-size: 56px 56px;
+      opacity: 0.45;
+      mask-image: radial-gradient(circle at 50% 50%, black 0%, transparent 76%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -140px;
+      top: 90px;
+      width: 540px;
+      height: 360px;
+      background:
+        radial-gradient(circle at 30% 35%, rgba(255, 255, 255, 0.18) 0 3px, transparent 4px),
+        radial-gradient(circle at 62% 25%, rgba(216, 180, 254, 0.26) 0 3px, transparent 4px),
+        radial-gradient(circle at 70% 68%, rgba(129, 140, 248, 0.22) 0 3px, transparent 4px),
+        linear-gradient(135deg, transparent 0 45%, rgba(255, 255, 255, 0.14) 46% 47%, transparent 48%),
+        linear-gradient(30deg, transparent 0 54%, rgba(216, 180, 254, 0.16) 55% 56%, transparent 57%);
+      border-radius: 50%;
+      opacity: 0.75;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 880px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 14px;
+      margin-bottom: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+    }
+
+    .hero h1 {
+      font-size: 46px;
+      line-height: 1.35;
+      margin: 0 0 28px;
+      letter-spacing: 0.03em;
+      color: #fff;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0 auto 34px;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 15px;
+      text-align: center;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* =========================
+       Button
+    ========================= */
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 160px;
+      height: 46px;
+      padding: 0 24px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+    }
+
+    .hero-actions .btn {
+      width: 180px;
+      height: 48px;
+      padding: 0 20px;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--blue-dark);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    .hero .btn-primary {
+      background: #fff;
+      color: var(--blue-dark);
+    }
+
+    .hero .btn-primary:hover {
+      background: var(--light-blue);
+    }
+
+    .hero .btn-secondary {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.72);
+    }
+
+    .hero .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    /* =========================
+       Section
+    ========================= */
+
+    .section {
+      padding: 88px 56px;
+    }
+
+    .section-white {
+      background: #fff;
+    }
+
+    .section-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: left;
+      margin-bottom: 40px;
+    }
+
+    .section-label {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+    }
+
+    .section-title h2 {
+      font-size: 32px;
+      line-height: 1.45;
+      margin: 0 0 12px;
+      letter-spacing: 0.04em;
+    }
+
+    .section-title p {
+      margin: 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    /* =========================
+       Support Step
+    ========================= */
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .support-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.04);
+    }
+
+    .support-card h3 {
+      margin: 0 0 12px;
+      font-size: 19px;
+      line-height: 1.45;
+    }
+
+    .support-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .step-label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 38px;
+      height: 24px;
+      padding: 0 10px;
+      margin-bottom: 14px;
+      border-radius: 999px;
+      background: var(--light-blue);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    /* =========================
+       Problem Table
+    ========================= */
+
+    .problem-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+    }
+
+    .problem-table th {
+      background: #f1f3f7;
+      font-size: 15px;
+      padding: 20px 24px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .problem-table td {
+      padding: 22px 24px;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+      font-size: 15px;
+    }
+
+    .problem-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .problem-table td:first-child {
+      width: 46%;
+      font-weight: 700;
+    }
+
+    .problem-table td:last-child {
+      color: #374151;
+    }
+
+    .support-link {
+      display: inline-flex;
+      margin-top: 10px;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    /* =========================
+       Tabs
+    ========================= */
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+
+    .tab {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .tab:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      background: var(--light-blue);
+    }
+
+    .tab.is-active {
+      background: var(--navy);
+      color: #fff;
+      border-color: var(--navy);
+    }
+
+    /* =========================
+       Service Cards
+    ========================= */
+
+    .service-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .service-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 28px;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+    }
+
+    .service-card.is-hidden {
+      display: none;
+    }
+
+    .service-content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+    }
+
+    .service-content h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      line-height: 1.45;
+    }
+
+    .service-content p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .service-content .btn {
+      margin-top: auto;
+      align-self: flex-start;
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.22), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.28), transparent 34%),
+        linear-gradient(135deg, #6648c6 0%, #5536b2 48%, #2e1a75 100%);
+      color: #fff;
+      text-align: center;
+      padding: 96px 56px;
+    }
+
+    .cta h2 {
+      font-size: 32px;
+      margin: 0 0 16px;
+      color: #fff;
+    }
+
+    .cta p {
+      color: rgba(255, 255, 255, 0.86);
+      margin: 0 0 28px;
+      font-size: 15px;
+    }
+
+    .cta .btn-primary {
+      background: #fff;
+      color: var(--blue-dark);
+    }
+
+    .cta .btn-primary:hover {
+      background: var(--light-blue);
+    }
+
+    .wire-note {
+      max-width: 1120px;
+      margin: 32px auto;
+      padding: 0 56px;
+      color: #8b95a5;
+      font-size: 12px;
+    }
+
+    /* =========================
+       Responsive
+    ========================= */
+
+    @media (max-width: 1024px) {
+      .support-grid,
+      .service-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        min-height: auto;
+        padding: 72px 24px;
+      }
+
+      .hero::after {
+        right: -240px;
+        top: 120px;
+        opacity: 0.35;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 14px;
+        text-align: left;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+        max-width: 280px;
+      }
+
+      .section {
+        padding: 64px 20px;
+      }
+
+      .section-title h2 {
+        font-size: 26px;
+      }
+
+      .problem-table,
+      .problem-table thead,
+      .problem-table tbody,
+      .problem-table tr,
+      .problem-table th,
+      .problem-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .problem-table thead {
+        display: none;
+      }
+
+      .problem-table tr {
+        border-bottom: 1px solid var(--line);
+        padding: 18px;
+      }
+
+      .problem-table td {
+        border-bottom: none;
+        padding: 0;
+      }
+
+      .problem-table td:first-child {
+        width: 100%;
+        margin-bottom: 12px;
+      }
+
+      .problem-table td:first-child::before {
+        content: "実現したいこと";
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 4px;
+      }
+
+      .problem-table td:last-child::before {
+        content: "当社の主な支援";
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 4px;
+      }
+
+      .support-grid,
+      .service-list {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        padding: 24px;
+      }
+
+      .cta {
+        padding: 72px 20px;
+      }
+    }
   </style>
 </head>
 
 <body>
   <main>
     <section class="hero">
-<div class="hero-inner">
-  <span class="hero-label">AI &amp; DATA SOLUTION</span>
+      <div class="hero-inner">
+        <span class="hero-label">AI &amp; DATA SOLUTION</span>
 
-  <h1>
-    社内データを活かし、<br />
-    業務で使えるAI活用基盤へ。
-  </h1>
+        <h1>
+          社内データを活かし、<br />
+          業務で使えるAI活用基盤へ。
+        </h1>
+
         <div class="hero-actions">
           <a href="#services" class="btn btn-primary">支援サービスを見る</a>
           <a href="https://pasona-dataanddesign.co.jp/contact/" class="btn btn-secondary">お問い合わせ</a>
@@ -589,6 +600,7 @@ a {
     <section class="section section-white">
       <div class="section-inner">
         <div class="section-title">
+          <span class="section-label">PROCESS</span>
           <h2>AI活用の構想から実運用まで、一貫して支援します</h2>
           <p>
             業務で成果につながるAI活用には、目的の整理、データの準備、安全な利用環境、継続的な運用改善が欠かせません。
@@ -638,6 +650,7 @@ a {
     <section class="section">
       <div class="section-inner">
         <div class="section-title">
+          <span class="section-label">ISSUES</span>
           <h2>AI・データ活用で実現したいこと</h2>
           <p>
             AI活用の目的整理から、社内ナレッジの活用、データ分析、セキュリティを考慮した運用設計まで、実現したい活用シーンに応じて支援します。
@@ -708,6 +721,7 @@ a {
     <section class="section section-white" id="services">
       <div class="section-inner">
         <div class="section-title">
+          <span class="section-label">SERVICES</span>
           <h2>AI・データ活用を支援するサービス</h2>
           <p>
             実現したいAI・データ活用に応じて、構想づくり、データ基盤整備、RAG・AIチャット活用、
@@ -759,69 +773,68 @@ a {
           </article>
 
           <article
-            class="service-card"
-            data-categories="rag"
-          >
-            <div class="service-content">
-              <h3>【仮】サービスA（RAG・AIチャット活用）</h3>
+  class="service-card"
+  data-categories="rag"
+>
+  <div class="service-content">
+    <h3>【仮】サービスA（RAG・AIチャット活用）</h3>
 
-              <p>
-                社内ドキュメントやデータベースを参照し、業務で活用できるRAG・AIチャット環境の
-                設計・構築を支援する想定サービスです。
-              </p>
+    <p>
+      社内ドキュメントやデータベースを参照し、業務で活用できるRAG・AIチャット環境の
+      設計・構築を支援する想定サービスです。
+    </p>
 
-              <a href="#" class="btn btn-primary">詳しく見る</a>
-            </div>
-          </article>
+    <a href="#" class="btn btn-primary">詳しく見る</a>
+  </div>
+</article>
 
-          <article
-            class="service-card"
-            data-categories="security"
-          >
-            <div class="service-content">
-              <h3>【仮】サービスB（セキュリティ・ガバナンス）</h3>
+<article
+  class="service-card"
+  data-categories="security"
+>
+  <div class="service-content">
+    <h3>【仮】サービスB（セキュリティ・ガバナンス）</h3>
 
-              <p>
-                機密情報や個人情報を扱うAI活用に向けて、権限管理、利用ルール、監査性などを考慮した
-                安全な利用環境づくりを支援する想定サービスです。
-              </p>
+    <p>
+      機密情報や個人情報を扱うAI活用に向けて、権限管理、利用ルール、監査性などを考慮した
+      安全な利用環境づくりを支援する想定サービスです。
+    </p>
 
-              <a href="#" class="btn btn-primary">詳しく見る</a>
-            </div>
-          </article>
+    <a href="#" class="btn btn-primary">詳しく見る</a>
+  </div>
+</article>
 
-          <article
-            class="service-card"
-            data-categories="production"
-          >
-            <div class="service-content">
-              <h3>【仮】サービスC（PoC・実運用化支援）</h3>
+<article
+  class="service-card"
+  data-categories="production"
+>
+  <div class="service-content">
+    <h3>【仮】サービスC（PoC・実運用化支援）</h3>
 
-              <p>
-                AI活用をPoCで終わらせず、MVP、本番導入、運用改善まで段階的に進めるための
-                実運用化支援を想定したサービスです。
-              </p>
+    <p>
+      AI活用をPoCで終わらせず、MVP、本番導入、運用改善まで段階的に進めるための
+      実運用化支援を想定したサービスです。
+    </p>
 
-              <a href="#" class="btn btn-primary">詳しく見る</a>
-            </div>
-          </article>
+    <a href="#" class="btn btn-primary">詳しく見る</a>
+  </div>
+</article>
 
-          <article
-            class="service-card"
-            data-categories="cloud"
-          >
-            <div class="service-content">
-              <h3>【仮】サービスD（クラウド・データ基盤）</h3>
+<article
+  class="service-card"
+  data-categories="cloud"
+>
+  <div class="service-content">
+    <h3>【仮】サービスD（クラウド・データ基盤）</h3>
 
-              <p>
-                既存のデータベースやクラウド環境を活かしながら、AI・データ活用に必要な
-                データ基盤の整備を支援する想定サービスです。
-              </p>
+    <p>
+      既存のデータベースやクラウド環境を活かしながら、AI・データ活用に必要な
+      データ基盤の整備を支援する想定サービスです。
+    </p>
 
-              <a href="#" class="btn btn-primary">詳しく見る</a>
-            </div>
-          </article>
-
+    <a href="#" class="btn btn-primary">詳しく見る</a>
+  </div>
+</article>
         </div>
       </div>
     </section>
